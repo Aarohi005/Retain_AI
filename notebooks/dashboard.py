@@ -22,7 +22,9 @@ st.set_page_config(page_title="Churn Dashboard", layout="wide")
 st.title("🏦 Customer Churn Analytics Dashboard")
 
 # --- Load Data ---
-df = load_and_clean("data/European_Bank.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "..", "data", "European_Bank.csv")
+df = load_and_clean(DATA_PATH)
 
 # --- Train Model ---
 model, X_test, y_test, y_pred, y_prob = train_xgb_model(df)

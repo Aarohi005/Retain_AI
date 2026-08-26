@@ -4,6 +4,7 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from xgboost import XGBClassifier
 import matplotlib.pyplot as plt
 from xgboost import plot_importance
+import os
 from data_cleaning import load_and_clean   # reuse your cleaning function
 
 def train_xgb_model(df):
@@ -57,7 +58,9 @@ def train_xgb_model(df):
 
 # Example usage (only runs if file is executed directly)
 if __name__ == "__main__":
-    df = load_and_clean("D:/projects/churn analysis/data/European_Bank.csv")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    DATA_PATH = os.path.join(BASE_DIR, "..", "data", "European_Bank.csv")
+    df = load_and_clean(DATA_PATH)
     model, X_test, y_test, y_pred, y_prob = train_xgb_model(df)
 
     print("Accuracy:", accuracy_score(y_test, y_pred))

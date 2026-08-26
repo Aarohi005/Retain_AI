@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, roc_auc_score
 
@@ -26,7 +28,9 @@ if __name__ == "__main__":
     from xgboost import XGBClassifier
 
     # Load cleaned dataset
-    df = load_and_clean("D:/projects/churn analysis/data/European_Bank.csv")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    DATA_PATH = os.path.join(BASE_DIR, "..", "data", "European_Bank.csv")
+    df = load_and_clean(DATA_PATH)
 
     # Prepare dataset
     df_model = pd.get_dummies(df, columns=['Geography'], drop_first=True)

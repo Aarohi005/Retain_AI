@@ -2,10 +2,13 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
-from data_cleaning import load_and_clean   # import your cleaning function
+import os
+from data_cleaning import load_and_clean   
 
 # Step 1: Load cleaned dataset
-df = load_and_clean("D:/projects/churn analysis/data/European_Bank.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "..", "data", "European_Bank.csv")
+df = load_and_clean(DATA_PATH)
 
 # Step 2: Select features for clustering
 # (choose numerical columns relevant for segmentation)

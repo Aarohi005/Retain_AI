@@ -1,7 +1,11 @@
 import pandas as pd
+import os
 from data_cleaning import load_and_clean
 
-df = load_and_clean()
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "..", "data", "European_Bank.csv")
+df = load_and_clean(DATA_PATH)
 
 # continue with segmentation...
 
